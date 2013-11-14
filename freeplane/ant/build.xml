@@ -4,7 +4,7 @@
 	<property name="src" value="src" />
 	<property name="resources" value="resources" />
 	<property name="viewer-resources" value="viewer-resources" />
-	<property name="eolstyle" value="unix" />
+	<property name="eolstyle" value="windows" />
 	<property name="root" value="." />
 	<property name="manifest" value="${root}/META-INF/OLD_MANIFEST.MF" />
 	<property name="osgimanifest" value="${root}/META-INF/MANIFEST.MF" />
