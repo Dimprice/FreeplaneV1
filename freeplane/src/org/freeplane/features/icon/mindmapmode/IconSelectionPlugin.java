@@ -64,6 +64,7 @@ public class IconSelectionPlugin extends AFreeplaneAction {
 		for (AFreeplaneAction aFreeplaneAction : mIconController.getIconActions())
 			actions.add((IIconInformation) aFreeplaneAction);
 		
+		actions.add((IIconInformation) modeController.getAction("AddIconAction"));
 		actions.add((IIconInformation) modeController.getAction("RemoveIcon_0_Action"));
 		actions.add((IIconInformation) modeController.getAction("RemoveIconAction"));
 		actions.add((IIconInformation) modeController.getAction("RemoveAllIconsAction"));
