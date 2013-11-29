@@ -27,6 +27,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.swing.JOptionPane;
+
 import org.freeplane.core.resources.ResourceController;
 import org.freeplane.core.ui.AFreeplaneAction;
 import org.freeplane.core.ui.EnabledAction;
@@ -65,6 +67,7 @@ public class AddIconAction extends AFreeplaneAction {
 			final String finalpath = iconDir+"\\"+filename;
 			final File fileCopy = new File(finalpath);
 			CopyFile(file,fileCopy);
+			JOptionPane.showMessageDialog(null, "Restart the application so that changes apply.");
 		}
 		
 	}
