@@ -110,6 +110,9 @@
 				<menu_action action="DeleteDetailsAction"/>		
 				<menu_separator/>
 				<menu_action action="ExternalImageAddAction" />
+				<menu_action action="ExternalAudioAddAction" />
+				<menu_action action="ExternalVideoAddAction" />
+				<menu_action action="ExternalGoogleMapImageAddAction" />
 				<menu_action action="ExternalImageChangeAction" />
 				<menu_action action="ExternalImageRemoveAction" />
 				<menu_separator/>
@@ -453,6 +456,9 @@
 		<menu_action action="SetShortenerStateAction" />
 		<menu_action action="EditNoteInDialogAction" />
 		<menu_action action="ExternalImageAddAction" />
+		<menu_action action="ExternalAudioAddAction" />
+		<menu_action action="ExternalVideoAddAction" />
+		<menu_action action="ExternalGoogleMapImageAddAction" />
 		<menu_action action="EditAttributesAction" accelerator="alt F9"/>
 			<menu_separator />
 		<menu_action action="NewSummaryAction" accelerator="alt shift INSERT" />

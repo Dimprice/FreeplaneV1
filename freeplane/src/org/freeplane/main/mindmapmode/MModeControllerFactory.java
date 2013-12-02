@@ -20,12 +20,14 @@
 package org.freeplane.main.mindmapmode;
 
 import java.awt.event.KeyEvent;
+
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+
 import org.freeplane.core.resources.ResourceController;
 import org.freeplane.core.ui.IEditHandler;
 import org.freeplane.core.ui.IMouseListener;
@@ -98,7 +100,10 @@ import org.freeplane.features.url.mindmapmode.SaveAll;
 import org.freeplane.main.mindmapmode.stylemode.SModeControllerFactory;
 import org.freeplane.view.swing.features.BlinkingNodeHook;
 import org.freeplane.view.swing.features.FitToPage;
+import org.freeplane.view.swing.features.filepreview.AddExternalAudioAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalImageAction;
+import org.freeplane.view.swing.features.filepreview.AddExternalVideoAction;
+import org.freeplane.view.swing.features.filepreview.AddExternalGoogleMapImageAction;
 import org.freeplane.view.swing.features.filepreview.ChangeExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.RemoveExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.ViewerController;
@@ -159,6 +164,9 @@ public class MModeControllerFactory {
 		modeController.addAction(new RemoveLastAttributeAction());
 		modeController.addAction(new RemoveAllAttributesAction());
 		modeController.addAction(new AddExternalImageAction());
+		modeController.addAction(new AddExternalAudioAction());
+		modeController.addAction(new AddExternalVideoAction());
+		modeController.addAction(new AddExternalGoogleMapImageAction());
 		modeController.addAction(new RemoveExternalImageAction());
 		modeController.addAction(new ChangeExternalImageAction());
 		modeController.addAction(new ShowFormatPanelAction());

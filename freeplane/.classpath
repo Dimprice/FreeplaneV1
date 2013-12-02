@@ -13,6 +13,20 @@
 	<classpathentry kind="lib" path="lib/freeplanemac.jar" sourcepath="/freeplane_mac/src"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/jortho.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/jna-3.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/jna-3.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/jna-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/platform-3.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/platform-3.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/vlcj-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALLY/Documents/eclipse java/eclipse keepler/Useful plugins/vlcj-2.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/jna-3.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/jna-3.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/jna-4.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/platform-3.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/platform-3.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/vlcj-2.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/vlcj-2.4.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JOrtho_0.4_freeplane"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
