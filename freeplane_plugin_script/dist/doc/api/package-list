@@ -1,0 +1,4 @@
+org.freeplane.core.ui.components
+org.freeplane.core.util
+org.freeplane.plugin.script
+org.freeplane.plugin.script.proxy
