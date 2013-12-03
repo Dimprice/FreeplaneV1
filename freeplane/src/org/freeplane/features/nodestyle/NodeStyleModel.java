@@ -30,11 +30,12 @@ import org.freeplane.features.map.NodeModel;
  */
 public class NodeStyleModel implements IExtension, Cloneable {
 	public static final String[] NODE_STYLES = new String[] { NodeStyleModel.STYLE_FORK, NodeStyleModel.STYLE_BUBBLE,
-	        NodeStyleModel.SHAPE_AS_PARENT, NodeStyleModel.SHAPE_COMBINED };
-	enum Shapes{as_parent, combined, bubble, fork};
+	        NodeStyleModel.STYLE_OVAL,  NodeStyleModel.SHAPE_AS_PARENT, NodeStyleModel.SHAPE_COMBINED };
+	enum Shapes{as_parent, combined, bubble, oval, fork};
 	public static final String SHAPE_AS_PARENT = "as_parent";
 	public static final String SHAPE_COMBINED = "combined";
 	public static final String STYLE_BUBBLE = "bubble";
+	public static final String STYLE_OVAL = "oval";
 	public static final String STYLE_FORK = "fork";
 
 	public static NodeStyleModel createNodeStyleModel(final NodeModel node) {

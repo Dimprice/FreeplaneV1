@@ -197,6 +197,7 @@ public class MNodeStyleController extends NodeStyleController {
 		modeController.addAction(new NodeBackgroundColorAction());
 		modeController.addAction(new NodeShapeAction(NodeStyleModel.STYLE_FORK));
 		modeController.addAction(new NodeShapeAction(NodeStyleModel.STYLE_BUBBLE));
+		modeController.addAction(new NodeShapeAction(NodeStyleModel.STYLE_OVAL));
 		modeController.addAction(new NodeWidthAction());
 	}
 

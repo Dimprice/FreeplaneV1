@@ -87,6 +87,13 @@ class NodeViewFactory {
 			else
 				view =  new BubbleMainView();
 		}
+		else if (shape.equals(NodeStyleModel.STYLE_OVAL)){
+				if (model.isRoot())
+					view = new RootMainView(NodeStyleModel.STYLE_OVAL);
+				else
+					view = new OvalMainView();
+			}
+		
 		else {
 			if (shape != null && ! shape.equals(NodeStyleModel.STYLE_FORK))
 				System.err.println("Tried to create a NodeView of unknown Style " + String.valueOf(shape));
@@ -108,6 +115,7 @@ class NodeViewFactory {
 			if (Controller.getCurrentModeController().getMapController().isFolded(model)) {
 				shape= NodeStyleModel.STYLE_BUBBLE;
 			}
+	
 			else {
 				shape = NodeStyleModel.STYLE_FORK;
 			}

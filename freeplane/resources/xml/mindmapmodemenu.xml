@@ -264,6 +264,7 @@
 				<menu_separator />
 				<menu_action action="NodeShapeAction.fork" />
 				<menu_action action="NodeShapeAction.bubble" />
+				<menu_action action="NodeShapeAction.oval" />
 				<menu_separator />
 				<menu_action action="RemoveFormatAction"/>
 				<menu_action action="UsePlainTextAction" accelerator="alt shift P" />

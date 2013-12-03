@@ -938,6 +938,7 @@ public class NodeView extends JComponent implements INodeView {
 		final PaintingMode paintingMode = map.getPaintingMode();
 		if (isContentVisible()) {
 			final Graphics2D g2 = (Graphics2D) g;
+			//final Graphics2D g3 = (Graphics2D) g;
 			final ModeController modeController = map.getModeController();
 			final Object renderingHint = g2.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
 			switch (paintingMode) {

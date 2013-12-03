@@ -22,6 +22,5 @@
 	<classpathentry kind="lib" path="lib/vlcj-2.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/jpedal_trial.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JOrtho_0.4_freeplane"/>
-	<classpathentry kind="lib" path="C:/Users/ALLY/Downloads/jpedal_trial.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
