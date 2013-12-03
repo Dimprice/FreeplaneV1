@@ -102,6 +102,7 @@ import org.freeplane.view.swing.features.BlinkingNodeHook;
 import org.freeplane.view.swing.features.FitToPage;
 import org.freeplane.view.swing.features.filepreview.AddExternalAudioAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalImageAction;
+import org.freeplane.view.swing.features.filepreview.AddExternalPDFAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalVideoAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalGoogleMapImageAction;
 import org.freeplane.view.swing.features.filepreview.ChangeExternalImageAction;
@@ -167,6 +168,7 @@ public class MModeControllerFactory {
 		modeController.addAction(new AddExternalAudioAction());
 		modeController.addAction(new AddExternalVideoAction());
 		modeController.addAction(new AddExternalGoogleMapImageAction());
+		modeController.addAction(new AddExternalPDFAction());
 		modeController.addAction(new RemoveExternalImageAction());
 		modeController.addAction(new ChangeExternalImageAction());
 		modeController.addAction(new ShowFormatPanelAction());
