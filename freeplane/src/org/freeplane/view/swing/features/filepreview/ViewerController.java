@@ -392,6 +392,8 @@ public class ViewerController extends PersistentNodeHook implements INodeViewLif
 		factories.add(new VideoViewerFactory());
 		factories.add(new GoogleMapViewerFactory());
 		factories.add(new PDFViewerFactory());
+		factories.add(new GoogleMapViewerFactory());
+		factories.add(new IconViewerFactory());
 	}
 
 	public void setZoom(final ModeController modeController, final MapModel map, final ExternalResource model,

@@ -103,8 +103,10 @@ import org.freeplane.view.swing.features.FitToPage;
 import org.freeplane.view.swing.features.filepreview.AddExternalAudioAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalPDFAction;
+import org.freeplane.view.swing.features.filepreview.AddExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalVideoAction;
 import org.freeplane.view.swing.features.filepreview.AddExternalGoogleMapImageAction;
+import org.freeplane.view.swing.features.filepreview.AddIconAction;
 import org.freeplane.view.swing.features.filepreview.ChangeExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.RemoveExternalImageAction;
 import org.freeplane.view.swing.features.filepreview.ViewerController;
@@ -171,6 +173,7 @@ public class MModeControllerFactory {
 		modeController.addAction(new AddExternalPDFAction());
 		modeController.addAction(new RemoveExternalImageAction());
 		modeController.addAction(new ChangeExternalImageAction());
+		modeController.addAction(new AddIconAction());
 		modeController.addAction(new ShowFormatPanelAction());
 		modeController.addAction(new FitToPage());
 		MEncryptionController.install(new MEncryptionController(modeController));

@@ -97,6 +97,7 @@
 				</menu_submenu>
 				<menu_action action="HierarchicalIconsAction" />
 				<menu_action action="HierarchicalIcons2Action" />
+				<menu_action action="AddIconAction" />
 				<menu_submenu name="menu_remove_icons" >
 					<menu_action action="RemoveIcon_0_Action" />
 					<menu_action action="RemoveIconAction" />
