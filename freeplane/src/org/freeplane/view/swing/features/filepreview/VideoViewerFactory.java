@@ -45,9 +45,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.media.Manager;
-import javax.media.MediaLocator;
-import javax.media.Player;
+//import javax.media.Manager;
+//import javax.media.MediaLocator;
+//import javax.media.Player;
 
 import org.freeplane.core.ui.components.BitmapViewerComponent;
 import org.freeplane.core.util.TextUtils;

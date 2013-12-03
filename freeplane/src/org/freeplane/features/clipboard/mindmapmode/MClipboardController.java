@@ -139,10 +139,27 @@ public class MClipboardController extends ClipboardController {
 					uri = file.getAbsoluteFile().toURI();
 				}
 				((MLinkController) LinkController.getController()).setLink(node, uri, false);
-				mapController.insertNode(node, target, asSibling, isLeft, isLeft);
+				//mapController.insertNode(node, target, asSibling, isLeft, isLeft);
+				copypaste(target, fileList);
+				//mapController.insertNode(node, target, asSibling, isLeft, isLeft);
+				//viewerController.paste(fileList.get(0), target, target.isLeft());
+				
+				dragDrop(target, fileList);
 			}
 		}
+		
 	}
+	// dimu method for copypaste
+			private void copypaste(final NodeModel target,  List<File> fileList){
+				ViewerController viewerController = ((ViewerController)Controller.getCurrentModeController().getExtension(ViewerController.class));
+				viewerController.paste(fileList.get(0), target, target.isLeft());
+				
+			}
+			private void dragDrop(final NodeModel target,  List<File> fileList){
+				ViewerController viewerController = ((ViewerController)Controller.getCurrentModeController().getExtension(ViewerController.class));
+				viewerController.paste(fileList.get(0), target, target.isLeft());
+				
+			}
 
 	interface IDataFlavorHandler {
 		void paste(Transferable t, NodeModel target, boolean asSibling, boolean isLeft, int dropAction);
