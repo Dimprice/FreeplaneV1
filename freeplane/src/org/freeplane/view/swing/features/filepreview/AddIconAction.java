@@ -59,6 +59,7 @@ public class AddIconAction extends AFreeplaneAction {
 		    .getExtension(ViewerController.class));
 		final NodeModel selectedNode = mapController.getSelectedNode();
 		final ExternalResource extRes = (ExternalResource) vc.createExtension(selectedNode);
+		long startTime = System.currentTimeMillis();
 		if (extRes != null) {
 			final File file = new File(extRes.getAbsoluteUri(selectedNode.getMap()));
 			final File userDir = new File(ResourceController.getResourceController().getFreeplaneUserDirectory());
@@ -67,6 +68,9 @@ public class AddIconAction extends AFreeplaneAction {
 			final String finalpath = iconDir+"\\"+filename;
 			final File fileCopy = new File(finalpath);
 			CopyFile(file,fileCopy);
+			long stopTime = System.currentTimeMillis();
+			long elapsedTime = stopTime - startTime;
+			System.out.println("Execution time: "+elapsedTime+" ms");
 			JOptionPane.showMessageDialog(null, "Restart the application so that changes apply.");
 		}
 		
