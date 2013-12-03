@@ -697,7 +697,7 @@ public class StyleEditorPanel extends JPanel {
 	private void addNodeShapeControl(final List<IPropertyControl> controls) {
 		mSetNodeShape = new BooleanProperty(StyleEditorPanel.SET_RESOURCE);
 		controls.add(mSetNodeShape);
-		mNodeShape = new ComboProperty(StyleEditorPanel.NODE_SHAPE, new String[] { "fork", "bubble", "as_parent",
+		mNodeShape = new ComboProperty(StyleEditorPanel.NODE_SHAPE, new String[] { "fork", "bubble", "oval", "as_parent",
 		        "combined" });
 		controls.add(mNodeShape);
 		final NodeShapeChangeListener listener = new NodeShapeChangeListener(mSetNodeShape, mNodeShape);

@@ -238,6 +238,7 @@ public abstract class MainView extends ZoomableLabel {
 			graphics.setPaint(new GradientPaint(getWidth() / 4, 0, getMap().getBackground(), getWidth() * 3 / 4, 0,
 			    NodeView.dragColor));
 			graphics.fillRect(getWidth() / 4, 0, getWidth() - 1, getHeight() - 1);
+			
 		}
 	}
 
