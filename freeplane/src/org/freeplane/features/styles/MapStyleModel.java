@@ -82,6 +82,8 @@ public class MapStyleModel implements IExtension {
 	}
 
 	private Color backgroundColor;
+	
+	private String backgroundPicture;
 
 	public MapStyleModel() {
 		conditionalStyleModel = new ConditionalStyleModel();
@@ -219,6 +221,14 @@ public class MapStyleModel implements IExtension {
 	public void setBackgroundColor(final Color backgroundColor) {
 		this.backgroundColor = backgroundColor;
 	}
+	
+	public String getBackgroundPicture() {
+		return backgroundPicture;
+	}
+
+	public void setBackgroundPicture(final String backgroundPicture) {
+		this.backgroundPicture = backgroundPicture;
+	}
 
 	public Set<IStyle> getStyles() {
 		return styleNodes.keySet();
@@ -262,6 +272,9 @@ public class MapStyleModel implements IExtension {
 		}
 		if(overwrite && source.backgroundColor != null|| backgroundColor == null){
 			backgroundColor = source.backgroundColor;
+		}
+		if(overwrite && source.backgroundPicture != null|| backgroundPicture == null){
+			backgroundPicture = source.backgroundPicture;
 		}
     }
 	

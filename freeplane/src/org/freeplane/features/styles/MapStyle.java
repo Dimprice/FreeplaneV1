@@ -70,6 +70,7 @@ import org.freeplane.n3.nanoxml.XMLElement;
 public class MapStyle extends PersistentNodeHook implements IExtension, IMapLifeCycleListener {
 	private static final String NODE_CONDITIONAL_STYLES = "NodeConditionalStyles";
 	public static final String RESOURCES_BACKGROUND_COLOR = "standardbackgroundcolor";
+	public static final String RESOURCES_BACKGROUND_PICTURE= "standardbackgroundpicture";
 	public static final String MAP_STYLES = "MAP_STYLES";
 	
 	public static void install(boolean persistent){
@@ -331,6 +332,18 @@ public class MapStyle extends PersistentNodeHook implements IExtension, IMapLife
 		final Color standardMapBackgroundColor = ColorUtils.stringToColor(stdcolor);
 		return standardMapBackgroundColor;
 	}
+	
+	public String getBackgroundPicture(final MapModel map) {
+		final IExtension extension = map.getRootNode().getExtension(MapStyleModel.class);
+		final String backgroundPicture = extension != null ? ((MapStyleModel) extension).getBackgroundPicture() : null;
+		if (backgroundPicture != null) {
+			return backgroundPicture;
+		}
+		final String stdpicture = ResourceController.getResourceController().getProperty(
+		    MapStyle.RESOURCES_BACKGROUND_PICTURE);
+		final String standardMapBackgroundPicture = stdpicture;
+		return standardMapBackgroundPicture;
+	}
 
 	@Override
 	protected Class<MapStyleModel> getExtensionClass() {
@@ -502,6 +515,33 @@ public class MapStyle extends PersistentNodeHook implements IExtension, IMapLife
 		Controller.getCurrentModeController().execute(actor, Controller.getCurrentController().getMap());
 	}
 
+	public void setBackgroundPicture(final MapStyleModel model, final String actionPicture) {
+		final String oldPicture = model.getBackgroundPicture();
+		if (actionPicture != null && actionPicture.equals(oldPicture)) {
+			return;
+		}
+		final IActor actor = new IActor() {
+			public void act() {
+				model.setBackgroundPicture(actionPicture);
+				Controller.getCurrentModeController().getMapController().fireMapChanged(
+				    new MapChangeEvent(MapStyle.this, Controller.getCurrentController().getMap(), MapStyle.RESOURCES_BACKGROUND_PICTURE,
+				        oldPicture, actionPicture));
+			}
+
+			public String getDescription() {
+				return "MapStyle.setBackgroundPicture";
+			}
+
+			public void undo() {
+				model.setBackgroundPicture(oldPicture);
+				Controller.getCurrentModeController().getMapController().fireMapChanged(
+				    new MapChangeEvent(MapStyle.this, Controller.getCurrentController().getMap(), MapStyle.RESOURCES_BACKGROUND_PICTURE,
+				        actionPicture, oldPicture));
+			}
+		};
+		Controller.getCurrentModeController().execute(actor, Controller.getCurrentController().getMap());
+	}
+	
 	public static  MapStyle getController(final ModeController modeController) {
         return (MapStyle) modeController.getExtension(MapStyle.class);
     }

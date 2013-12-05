@@ -41,8 +41,11 @@ import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
+import java.io.File;
+import java.io.IOException;
 import java.util.AbstractList;
 import java.util.AbstractSet;
 import java.util.ArrayList;
@@ -57,6 +60,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
@@ -105,6 +109,47 @@ import org.freeplane.view.swing.map.link.ILinkView;
 public class MapView extends JPanel implements Printable, Autoscroll, IMapChangeListener, IFreeplanePropertyListener {
 	
 
+	boolean imageChanged = true;
+	String imagePath = null;
+	BufferedImage backgroundImage = null;
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		if(imageChanged == true){
+			try {
+				backgroundImage= null;
+				if(imagePath != null && (!imagePath.equalsIgnoreCase("nothing"))){
+				backgroundImage = ImageIO.read(new File(
+						imagePath));
+				}
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			imageChanged = false;
+		}
+		
+		//System.out.println("Path: " + imagePath);
+		NodeView rootNodeView = getRoot();
+		Point rootNodeContentLocation = new Point(0, 0);
+        rootNodeContentLocation = getNodeContentLocation(rootNodeView);
+		
+        if(backgroundImage != null){
+			int imageHeight = backgroundImage.getHeight() / 2;
+			int imageWidth = backgroundImage.getWidth() / 2;
+			int rootHeight = (rootNodeView.getHeight() / 2)/2;
+			int rootWidth = (rootNodeView.getWidth() / 2)/2;
+			//System.out.println("width=" + rootWidth + " height=" + rootHeight);
+			rootNodeContentLocation.x += rootWidth;
+			rootNodeContentLocation.y += (rootHeight - 13);
+			
+			
+			g.drawImage(backgroundImage, rootNodeContentLocation.x-(imageWidth), rootNodeContentLocation.y-(imageHeight), null);
+			}
+	}
+	
 	private class Resizer extends HierarchyBoundsAdapter{
 
 		@Override
@@ -1043,6 +1088,12 @@ public class MapView extends JPanel implements Printable, Autoscroll, IMapChange
 			setBackground(requiredBackground());
 			return;
 		}
+		if (property.equals(MapStyle.RESOURCES_BACKGROUND_PICTURE)) {
+			imageChanged = true;
+			imagePath = requiredBackgroundPicture();
+			repaint();
+			return;
+		}
 		if (property.equals(MapStyle.MAP_STYLES)){
 	        // set default font for notes:
 	        updateContentStyle();
@@ -1550,6 +1601,12 @@ public class MapView extends JPanel implements Printable, Autoscroll, IMapChange
 		final MapStyle mapStyle = (MapStyle) getModeController().getExtension(MapStyle.class);
 		final Color mapBackground = mapStyle.getBackground(model);
 		return mapBackground;
+	}
+	
+	private String requiredBackgroundPicture() {
+		final MapStyle mapStyle = (MapStyle) getModeController().getExtension(MapStyle.class);
+		final String mapBackgroundPicture = mapStyle.getBackgroundPicture(model);
+		return mapBackgroundPicture;
 	}
 
 	void revalidateSelecteds() {
