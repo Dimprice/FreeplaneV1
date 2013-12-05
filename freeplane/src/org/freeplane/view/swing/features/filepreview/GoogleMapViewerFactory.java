@@ -52,6 +52,7 @@ public class GoogleMapViewerFactory implements IViewerFactory{
 
 	public JComponent createViewer(final ExternalResource resource, final URI uri, int maximumWidth) throws MalformedURLException,
 	        IOException {
+		 
 //		JOptionPane.showMessageDialog(null, "Hej outside googlemap frame");
 //		final BitmapViewerComponent bitmapViewerComponent = new BitmapViewerComponent(uri);
 //		final Dimension originalSize = bitmapViewerComponent.getOriginalSize();
@@ -69,6 +70,7 @@ public class GoogleMapViewerFactory implements IViewerFactory{
 		JFrame test = new JFrame("Google Maps");
 
         try {
+        	//Text
         	//JOptionPane.showMessageDialog(null, "Hej inside googlemap frame");
 //            String imageUrl = "http://maps.google.com/staticmap?center=40,26&zoom=1&size=150x112&maptype=satellite&key=ABQIAAAAgb5KEVTm54vkPcAkU9xOvBR30EG5jFWfUzfYJTWEkWk2p04CHxTGDNV791-cU95kOnweeZ0SsURYSA&format=jpg";
             String imageUrl = "http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=true";
