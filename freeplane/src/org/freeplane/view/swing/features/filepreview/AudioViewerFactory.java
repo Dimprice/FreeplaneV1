@@ -115,7 +115,7 @@ public class AudioViewerFactory implements IViewerFactory {
 		JLabel Title = new JLabel("TITLE: ");
 		tField = new TextField(20);
 		tField.setEditable(true);
-		tField.setText(new Scanner(new File("fieldSave.txt")).useDelimiter("\\A").next());
+		//tField.setText(new Scanner(new File("fieldSave.txt")).useDelimiter("\\A").next());
 	//	JLabel TitleData = new JLabel("________________________");
 		
 		JButton TitleButton = new JButton("Save Title");
