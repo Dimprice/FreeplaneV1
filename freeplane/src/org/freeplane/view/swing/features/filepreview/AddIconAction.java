@@ -39,9 +39,9 @@ import org.freeplane.view.swing.features.progress.mindmapmode.ProgressUtilities;
 
 /**
  * 
- * @author Stefan Ott
+ * @author Joffrey Diebold
  *
- *This action adds an external image to a node
+ *This action adds a user icon to the left bar.
  */
 @EnabledAction(checkOnNodeChange = true)
 public class AddIconAction extends AFreeplaneAction {
