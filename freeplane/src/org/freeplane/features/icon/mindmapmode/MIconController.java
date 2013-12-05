@@ -65,6 +65,7 @@ import org.freeplane.features.mode.Controller;
 import org.freeplane.features.mode.ModeController;
 import org.freeplane.features.mode.mindmapmode.MModeController;
 import org.freeplane.features.ui.ViewController;
+import org.freeplane.view.swing.features.filepreview.AddIconActionLeftBar;
 
 /**
  * @author Dimitry Polivaev
@@ -226,6 +227,7 @@ public class MIconController extends IconController {
 	}
 
 	private void createIconActions(final ModeController modeController) {
+		modeController.addAction(new AddIconActionLeftBar());
 		modeController.addAction(new RemoveIconAction(0));
 		modeController.addAction(new RemoveIconAction(-1));
 		modeController.addAction(new RemoveAllIconsAction());
@@ -240,7 +242,7 @@ public class MIconController extends IconController {
 		final OptionPanelBuilder optionPanelBuilder = modeController.getOptionPanelBuilder();
 		final List<AFreeplaneAction> actions = new ArrayList<AFreeplaneAction>();
 		actions.addAll(iconActions.values());
-		actions.add(modeController.getAction("AddIconAction"));
+		actions.add(modeController.getAction("AddIconActionLeftBar"));
 		actions.add(modeController.getAction("RemoveIcon_0_Action"));
 		actions.add(modeController.getAction("RemoveIconAction"));
 		actions.add(modeController.getAction("RemoveAllIconsAction"));
@@ -382,7 +384,7 @@ public class MIconController extends IconController {
 
 	private void updateIconToolbar(ModeController modeController) {
 		iconToolBar.removeAll();
-		iconToolBar.add(modeController.getAction("AddIconAction")).setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		iconToolBar.add(modeController.getAction("AddIconActionLeftBar")).setAlignmentX(JComponent.CENTER_ALIGNMENT);
 		iconToolBar.add(modeController.getAction("RemoveIcon_0_Action"))
 		    .setAlignmentX(JComponent.CENTER_ALIGNMENT);
 		iconToolBar.add(modeController.getAction("RemoveIconAction")).setAlignmentX(JComponent.CENTER_ALIGNMENT);
