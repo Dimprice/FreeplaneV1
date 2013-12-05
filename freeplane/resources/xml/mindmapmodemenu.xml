@@ -250,6 +250,7 @@
 
 				<menu_separator />
 			<menu_action action="MapBackgroundColorAction" />	
+			<menu_action action="MapBackgroundPictureAction"/>
 			<menu_submenu name="menu_coreFormat" name_ref="menu_coreFormat">	
 				<menu_action action="BoldAction" accelerator="control B" />
 				<menu_action action="ItalicAction" accelerator="control I" />
@@ -443,7 +444,8 @@
 		<menu_action action="ShowFormatPanel" />
 		<menu_action action="ShowHideNoteAction" accelerator="control GREATER" />
 			<menu_separator />
-		<menu_action action="MapBackgroundColorAction" />	
+		<menu_action action="MapBackgroundColorAction" />
+		<menu_action action="MapBackgroundPictureAction"/>
 			<menu_separator />
 		<menu_action action="ViewLayoutTypeAction.OUTLINE" />
 		<menu_action action="FitToPage" />
