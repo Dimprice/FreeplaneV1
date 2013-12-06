@@ -9,7 +9,8 @@
 			<menu_action action="SaveAction" accelerator="control S" />
 			<menu_action action="SaveAsAction" accelerator="control shift S" />
 			<menu_action action="SaveAll" />
-			<menu_action action="RevertAction" />	
+			<menu_action action="RevertAction" />
+			<menu_action action="SendMail"/>	
 			<menu_separator />							
 			<menu_action action="OpenAction" accelerator="control O" />
 			<menu_action action="OpenURLMapAction" />

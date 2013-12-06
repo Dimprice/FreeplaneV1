@@ -27,6 +27,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyEvent;
@@ -38,6 +39,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -49,6 +51,10 @@ import javax.swing.JPanel;
 //import javax.media.MediaLocator;
 //import javax.media.Player;
 
+
+
+
+import org.apache.commons.io.FileUtils;
 import org.freeplane.core.ui.components.BitmapViewerComponent;
 import org.freeplane.core.util.TextUtils;
 import org.freeplane.view.swing.features.filepreview.AudioViewerFactory.AddTitleData;
@@ -70,6 +76,8 @@ import uk.co.caprica.vlcj.runtime.windows.WindowsCanvas;
  * 19.11.2013
  */
 public class VideoViewerFactory implements IViewerFactory {
+	
+	private static TextField tField;
 	
 	public VideoViewerFactory()
 	{
@@ -96,20 +104,29 @@ public class VideoViewerFactory implements IViewerFactory {
 		JLabel FileName = new JLabel("VIDEO FILE");
 		
 		JLabel Title = new JLabel("TITLE: ");
-		JLabel TitleData = new JLabel("________________________");
+		tField = new TextField(20);
+		tField.setEditable(true);
+		//tField.setText(new Scanner(new File("fieldSave.txt")).useDelimiter("\\A").next());
 		
-		JButton TitleButton = new JButton("Add Title");
+	//	JLabel TitleData = new JLabel("________________________");
+		
+		JButton TitleButton = new JButton("Save Title");
 		JButton playVideo = new JButton("Play Video");
 		
 		jc.add(FileType);
 		jc.add(FileName);
 		jc.add(Title);
-		jc.add(TitleData);
+		jc.add(tField);
+//		jc.add(TitleData);
 		jc.add(TitleButton);
 		jc.add(playVideo);
 		
+		
+		
 		playVideo.addActionListener(new PlayAudio(mediaPath, vlcPath));
 		TitleButton.addActionListener(new AddTitleData());
+		
+		tField.addActionListener(new AddTitleData());
 		
 		jc.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		
@@ -186,8 +203,23 @@ public class VideoViewerFactory implements IViewerFactory {
 	static class AddTitleData implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			JOptionPane.showMessageDialog(null, "Add title description");
+			tField.setEditable(false);
+			try {
+				FileUtils.writeStringToFile(new File("fieldSave.txt"), tField.getText());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+	//		JOptionPane.showMessageDialog(null, "Add title description");
 //			codes to change description label
+		}
+		
+	}
+	 class SaveTitle implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+		 tField.setEditable(false);
+			
 		}
 		
 	}

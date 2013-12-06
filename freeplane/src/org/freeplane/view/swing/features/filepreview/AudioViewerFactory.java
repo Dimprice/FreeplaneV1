@@ -26,6 +26,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -39,6 +40,7 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -51,8 +53,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.apache.commons.io.FileUtils;
 import org.freeplane.core.ui.components.BitmapViewerComponent;
 import org.freeplane.core.util.TextUtils;
 
@@ -84,7 +88,7 @@ import com.sun.jna.NativeLibrary;
  * 19.11.2013
  */
 public class AudioViewerFactory implements IViewerFactory {
-	
+	private static TextField tField;
 	public AudioViewerFactory()
 	{
 		
@@ -109,15 +113,19 @@ public class AudioViewerFactory implements IViewerFactory {
 		JLabel FileName = new JLabel("AUDIO FILE");
 		
 		JLabel Title = new JLabel("TITLE: ");
-		JLabel TitleData = new JLabel("________________________");
+		tField = new TextField(20);
+		tField.setEditable(true);
+		//tField.setText(new Scanner(new File("fieldSave.txt")).useDelimiter("\\A").next());
+	//	JLabel TitleData = new JLabel("________________________");
 		
-		JButton TitleButton = new JButton("Add Title");
+		JButton TitleButton = new JButton("Save Title");
 		JButton playAudio = new JButton("Play Audio");
 		
 		jc.add(FileType);
 		jc.add(FileName);
 		jc.add(Title);
-		jc.add(TitleData);
+		jc.add(tField);
+//		jc.add(TitleData);
 		jc.add(TitleButton);
 		jc.add(playAudio);
 		
@@ -201,8 +209,24 @@ public class AudioViewerFactory implements IViewerFactory {
 	static class AddTitleData implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			JOptionPane.showMessageDialog(null, "Add title description");
+			tField.setEditable(false);
+			try {
+				FileUtils.writeStringToFile(new File("fieldSave.txt"), tField.getText());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+//			JOptionPane.showMessageDialog(null, "Add title description");
+//			JTextField yourInputField = new JTextField(16);
+			//content.add(yourInputField);
 //			codes to change description label
+		}
+		
+	}
+	class SaveTitle implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+		 tField.setEditable(false);
+			
 		}
 		
 	}
