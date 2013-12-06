@@ -22,7 +22,7 @@ import org.freeplane.view.swing.features.progress.mindmapmode.ProgressUtilities;
 
 /**
  * 
- * @author Stefan Ott & Ally Bitebo
+ * @author jahirul haq
  *
  *This action adds an google map image from a given link to a node
  */

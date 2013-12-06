@@ -27,9 +27,7 @@ import org.freeplane.core.util.TextUtils;
 
 
 /**
- * @author Dimitry Polivaev
- * 22.08.2009
- * @author Ally Bitebo
+ * 
  * 22.11.2013
  */
 public class GoogleMapViewerFactory implements IViewerFactory{
