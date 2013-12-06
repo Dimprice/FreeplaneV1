@@ -89,8 +89,12 @@ class MapBackgroundPictureAction extends AFreeplaneAction {
 			return;
 	    }
 		
+		long startTime = System.currentTimeMillis();
 		final String actionPicture = chooser.getSelectedFile().getAbsolutePath();
 		mapStyle.setBackgroundColor(model, Color.WHITE);
 		mapStyle.setBackgroundPicture(model, actionPicture);
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - startTime;
+		System.out.println("Execution time: "+elapsedTime+" ms");
 	}
 }

@@ -521,24 +521,38 @@ public class MapStyle extends PersistentNodeHook implements IExtension, IMapLife
 			return;
 		}
 		final IActor actor = new IActor() {
+
 			public void act() {
+				long startTime = System.currentTimeMillis();
+				//time behavior: start
 				model.setBackgroundPicture(actionPicture);
 				Controller.getCurrentModeController().getMapController().fireMapChanged(
 				    new MapChangeEvent(MapStyle.this, Controller.getCurrentController().getMap(), MapStyle.RESOURCES_BACKGROUND_PICTURE,
 				        oldPicture, actionPicture));
+				long stopTime = System.currentTimeMillis();
+				//time behavior: stop
+				long elapsedTime = stopTime - startTime;
+				System.out.println("Execution time: "+elapsedTime+" ms");
 			}
 
 			public String getDescription() {
 				return "MapStyle.setBackgroundPicture";
 			}
-
+			
 			public void undo() {
+				long startTime2 = System.currentTimeMillis();
+				//time behavior: start
 				model.setBackgroundPicture(oldPicture);
 				Controller.getCurrentModeController().getMapController().fireMapChanged(
 				    new MapChangeEvent(MapStyle.this, Controller.getCurrentController().getMap(), MapStyle.RESOURCES_BACKGROUND_PICTURE,
 				        actionPicture, oldPicture));
+				long stopTime2 = System.currentTimeMillis();
+				//time behavior: stop
+				long elapsedTime2 = stopTime2 - startTime2;
+				System.out.println("Execution time: "+elapsedTime2+" ms");
 			}
 		};
+		
 		Controller.getCurrentModeController().execute(actor, Controller.getCurrentController().getMap());
 	}
 	
