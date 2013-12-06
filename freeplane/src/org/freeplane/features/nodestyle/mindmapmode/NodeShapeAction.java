@@ -39,6 +39,14 @@ class NodeShapeAction extends AMultipleNodeAction {
 
 	@Override
 	protected void actionPerformed(final ActionEvent e, final NodeModel node) {
+		long startTime = System.currentTimeMillis();
+		//time behavior: start
+
 		((MNodeStyleController) NodeStyleController.getController()).setShape(node, actionShape);
+		
+		long stopTime = System.currentTimeMillis();
+		//time behavior: stop
+		long elapsedTime = stopTime - startTime;
+		System.out.println("Execution time: "+elapsedTime+" ms");
 	}
 }
