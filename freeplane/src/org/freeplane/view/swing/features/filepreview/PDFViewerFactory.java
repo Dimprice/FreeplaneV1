@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -62,7 +65,7 @@ public class PDFViewerFactory implements IViewerFactory{
 		jc.add(TitleButton);
 		jc.add(playAudio);
 		
-		playAudio.addActionListener(new DisplayPDF());
+		playAudio.addActionListener(new DisplayPDF(mediaPath));
 		TitleButton.addActionListener(new AddTitleData());
 		
 		jc.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -75,10 +78,9 @@ public class PDFViewerFactory implements IViewerFactory{
 		private URI mediaPath = null;
 		private JFrame ourFrame = new JFrame();
 		
-//		public PlayAudio(URI mediaPath,String vlcPath) {
-//			this.mediaPath = mediaPath;
-//			this.vlcPath = vlcPath;
-//		}
+		public DisplayPDF(URI mediaPath) {
+			this.mediaPath = mediaPath;
+			}
 
 		public void actionPerformed(ActionEvent e) {
 			
@@ -98,7 +100,7 @@ public class PDFViewerFactory implements IViewerFactory{
 		    ourFrame.addWindowListener(new WindowListener(){
 		      public void windowActivated(WindowEvent e) {}
 		      public void windowClosed(WindowEvent e) {}
-		      public void windowClosing(WindowEvent e) {System.exit(1);}
+		      public void windowClosing(WindowEvent e) {ourFrame.setVisible(false);}
 		      public void windowDeactivated(WindowEvent e) {}
 		      public void windowDeiconified(WindowEvent e) {}
 		      public void windowIconified(WindowEvent e) {}
@@ -108,12 +110,47 @@ public class PDFViewerFactory implements IViewerFactory{
 		    //Display Frame
 		    ourFrame.setVisible(true);
 		    
-		    Object[] input;
+		    final Object[] input;
 		    
 		    //Specify file you wish to open (JPedal handles getting the byte data)
 //		    input = new Object[]{"/PDFData/Hand_Test/crbtrader.pdf"};
-		    input = new Object[]{"C:\\my.pdf"};
-		    viewer.executeCommand(Commands.OPENFILE, input);
+		    String mediaUriString = "";
+		    String inputString = "";
+			try {
+				mediaUriString =  mediaPath.toURL().toString();
+				
+				String[] tokens  = mediaUriString.split("/");
+				for (int i = 0; i < tokens.length; i++) {
+				//	System.out.println(tokens[i]);
+					if(!tokens[i].equals("file:"))
+					{
+						if(i != tokens.length-1)
+						inputString  += tokens[i] + "\\";
+						else
+							inputString += tokens[i];
+					}
+				}
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			File fileSize=new File(mediaPath);
+		    byte[] data=new byte[(int) fileSize.length()];
+		    FileInputStream fis = null;
+			try {
+				 fis = new FileInputStream(fileSize);
+				fis.read(data);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		    input = new Object[]{data, inputString};
+		    //System.out.println("Media Path is :" + inputString + "\ni is " + i);
+		    viewer.executeCommand(Commands.OPENFILE,input );
 		}
 	}
 	
