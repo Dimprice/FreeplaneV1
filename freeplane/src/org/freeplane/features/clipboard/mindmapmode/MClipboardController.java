@@ -151,14 +151,24 @@ public class MClipboardController extends ClipboardController {
 	}
 	// dimu method for copypaste
 			private void copypaste(final NodeModel target,  List<File> fileList){
+				long startTime = System.currentTimeMillis();
+				//time behavior: start
 				ViewerController viewerController = ((ViewerController)Controller.getCurrentModeController().getExtension(ViewerController.class));
 				viewerController.paste(fileList.get(0), target, target.isLeft());
-				
+				long stopTime = System.currentTimeMillis();
+				//time behavior: stop
+				long elapsedTime = stopTime - startTime;
+				System.out.println("Execution time: "+elapsedTime+" ms");
 			}
 			private void dragDrop(final NodeModel target,  List<File> fileList){
+				long startTime = System.currentTimeMillis();
+				//time behavior: start
 				ViewerController viewerController = ((ViewerController)Controller.getCurrentModeController().getExtension(ViewerController.class));
 				viewerController.paste(fileList.get(0), target, target.isLeft());
-				
+				long stopTime = System.currentTimeMillis();
+				//time behavior: stop
+				long elapsedTime = stopTime - startTime;
+				System.out.println("Execution time: "+elapsedTime+" ms");
 			}
 
 	interface IDataFlavorHandler {
