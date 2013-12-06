@@ -152,6 +152,9 @@ public class AudioViewerFactory implements IViewerFactory {
 		public void actionPerformed(ActionEvent e) {
 			
 			// TODO Auto-generated method stub
+			long startTime = System.currentTimeMillis();
+			//time behavior: start
+
 			NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), vlcPath);
 			ourMediaPlayer = new EmbeddedMediaPlayerComponent();
 			Point location = MouseInfo.getPointerInfo().getLocation(); 
@@ -202,6 +205,10 @@ public class AudioViewerFactory implements IViewerFactory {
 				}
 			});
 			ourMediaPlayer.getMediaPlayer().playMedia(mediaPath.toString());
+			long stopTime = System.currentTimeMillis();
+			//time behavior: stop
+			long elapsedTime = stopTime - startTime;
+			System.out.println("Execution time: "+elapsedTime+" ms");
 		}
 		
 	}

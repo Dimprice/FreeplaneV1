@@ -85,6 +85,9 @@ public class PDFViewerFactory implements IViewerFactory{
 		public void actionPerformed(ActionEvent e) {
 			
 			// TODO Auto-generated method stub
+			long startTime = System.currentTimeMillis();
+			//time behavior: start
+			
 			Point location = MouseInfo.getPointerInfo().getLocation(); 
 			int x = (int) location.getX();
 			int y = (int) location.getY();
@@ -109,6 +112,11 @@ public class PDFViewerFactory implements IViewerFactory{
 		    
 		    //Display Frame
 		    ourFrame.setVisible(true);
+		    
+		    long stopTime = System.currentTimeMillis();
+			//time behavior: stop
+			long elapsedTime = stopTime - startTime;
+			System.out.println("Execution time: "+elapsedTime+" ms");
 		    
 		    final Object[] input;
 		    
