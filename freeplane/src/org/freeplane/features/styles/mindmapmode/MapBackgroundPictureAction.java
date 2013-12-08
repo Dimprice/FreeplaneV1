@@ -21,8 +21,6 @@ package org.freeplane.features.styles.mindmapmode;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.util.Set;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -30,17 +28,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.freeplane.core.resources.ResourceController;
 import org.freeplane.core.ui.AFreeplaneAction;
-import org.freeplane.core.ui.ColorTracker;
-import org.freeplane.core.util.ColorUtils;
-import org.freeplane.core.util.TextUtils;
 import org.freeplane.features.mode.Controller;
 import org.freeplane.features.styles.MapStyle;
 import org.freeplane.features.styles.MapStyleModel;
 import org.freeplane.features.ui.ViewController;
 import org.freeplane.features.url.UrlManager;
-import org.freeplane.view.swing.features.filepreview.BitmapViewerFactory;
-import org.freeplane.view.swing.features.filepreview.IViewerFactory;
-import org.freeplane.view.swing.features.filepreview.ImagePreview;
 
 
 /**
